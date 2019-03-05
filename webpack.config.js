@@ -42,7 +42,9 @@ module.exports = {
                 }
             },
             {
-                test: /\/sass$/,
+                // apparently have to load all these in this specific order in this order for sass and bootstrap to work
+                // havent tested taking things out yet
+                test: /\.(sass|scss|css)$/,
                 use: [
                     {
                         loader: "style-loader"
@@ -51,6 +53,17 @@ module.exports = {
                         loader: "css-loader",
                         options: {
                             sourceMap: true
+                        }
+                    },
+                    {
+                        loader: "postcss-loader",
+                        options: {
+                            plugins: function() {
+                                return [
+                                    require("precss"),
+                                    require("autoprefixer")
+                                ];
+                            }
                         }
                     },
                     {
