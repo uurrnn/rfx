@@ -2,10 +2,13 @@ import { h } from "preact";
 import Header from "../header/header";
 
 const Hero = () => (
-    <div>
+    <section className="hero">
         <Header />
-        <h1>Hero</h1>
-    </div>
+        <h1>RFX is the Total Package</h1>
+        <aside className="hero__bg" />
+        <aside className="hero__bg" />
+        <aside className="hero__bg" />
+    </section>
 );
 
 export default Hero;

@@ -2,9 +2,11 @@ import { h } from "preact";
 import Hero from "./hero/hero";
 
 const App = () => (
-    <div>
+    <div className="container">
         <Hero />
-        <h1>Hello Wasdorld</h1>
+        <main>
+            <p>below the fold</p>
+        </main>
     </div>
 );
 
