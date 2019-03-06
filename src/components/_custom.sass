@@ -1,11 +1,214 @@
+
+// z-index legend
+// 1  background colors
+// 2  background texture
+// 3  right-side image/shapes
+// 4  hero tag,quote,button   
+    
+@import url('https://fonts.googleapis.com/css?family=Marcellus|Permanent+Marker');
+
+$marker:    "Permanent Marker", cursive
+$marcellus: "Marcellus", serif
+
+$black:     rgb(0, 0, 0)
+$slate:     rgb(20, 20, 20)
+$concrete:  rgb(100, 100, 100)
+$white:     rgb(255, 255, 255)
+$red:       rgb(185, 43, 39)
+$blue:      rgb(19, 47, 99)
+$lightblue: rgb(55, 177, 251)
+$pink:      rgb(172, 121, 255)
+
+$primary: $blue
+$secondary: $red
+
+
 body
-    background-color: #555
+    background: $slate
+
 
 .hero
     @include make-row()
     height: 100vh
     flex-direction: column
-    background: #eaeaea
+    background-color: #fafafa
+    background-image: linear-gradient(125deg, rgba($red, 0) -35%, rgba($red, 1) 15%, rgba($blue, 1) 80% )
+    position: relative
+    &__bg, &__bg2, &__bg3
+        position: absolute
+        display: block
+        border-radius: 50%
+        width: 100%
+        height: 100%
+        z-index: 3
+        top: 50%
+        left: 70%
+        transform: translate(-50%, -50%)
+    &__bg
+        background-color: #24c6dc
+        max-width: 500px
+        max-height: 500px
+    &__bg2
+        background-color: #3f93cf
+        max-width: 325px
+        max-height: 325px
+    &__bg3
+        background-color: #514a9d
+        max-width: 175px
+        max-height: 175px
+        
+
+    .scroll-more
+        position: absolute
+        left: 50%
+        bottom: 65px
+        translateX(-50%)
+    &__tag, &__quote, &__button
+        position: relative
+        z-index: 4
+        color: $white
+        left: 11%
+    &__tag
+        top: 15vh
+        left: 10%
+        text-shadow: 1px 1px 0 #111
+        font-family: $marker
+        font-size: 5.5rem
+        line-height: 6rem
+    &__quote
+        top: 17vh
+        width: 50%
+        max-width: 500px
+        border-left: 10px solid rgba($white, .5)
+        padding-left: 25px
+        font-family: $marcellus
+        font-size: 1.25rem
+    &__button
+        max-width: 250px
+        top: 19vh
+        border: none
+        background-color: $blue
+        font-family: $marcellus
+        font-size: 2rem
+        padding: 10px
+        &:hover
+            background-color: lighten($blue, 5%)
+    &::before,&::after
+        content: ''
+        display: block
+        position: absolute
+        top: 0
+        left: 0
+        width: 100%
+        height: 100%
+        z-index: 1
+    &::before
+        background-image: radial-gradient( circle at 60%,  rgba($lightblue, .4) 0%, rgba($pink, .05) 50% )
+    &::after
+        background-image: url("../assets/3px-tile.png")
+        opacity: .25
+        z-index: 2
+
+
+.scroll-more
+    position: relative
+    background: transparent
+    border: 3px solid $white
+    height: 60px
+    width: 40px
+    border-radius: 19px
+    opacity: .125
+    &__wheel
+        background-color: $white
+        width: 3px
+        border-radius: 25%
+        height: 12px
+        position: absolute
+        top: 8px
+        left: 50%
+        transform: translateX(-50%)
+        animation-name: scroll
+        animation-duration: 2.2s
+        animation-timing-function: cubic-bezier(.15,.41,.69,.94)
+        animation-iteration-count: infinite
+
+@keyframes scroll 
+  0%
+      opacity: 0
+  10%
+      transform: translate(-50%, 0)
+      opacity: 1
+  100%
+      transform: translate(-50%, 10px)
+      opacity: 0
+
+.logo
+    width: 100%
+    max-width: 75px
+    height: auto
+
+
 
 .header
-    display: block
+    display: flex
+    flex-direction: row
+    z-index: 4
+    position: relative
+    &__left
+        @include make-col-ready()
+        @include make-col(2)
+        .logo
+            margin-top: 30px
+            margin-left: 15px
+            opacity: .5
+            transition: opacity 100ms
+            &:hover
+                opacity: 1
+    &__right
+        @include make-col-ready()
+        @include make-col(10)
+        display: flex
+        flex-direction: row
+
+
+
+.nav, .support
+    @include make-row()
+    width: 100%
+    justify-content: flex-end
+    margin-top: 20px
+    &__list
+        @include make-col-ready()
+        list-style: none
+        margin: 0
+        padding: 0
+        display: flex
+        flex-direction: row
+        align-items: center
+        justify-content: space-between
+    &__link
+        color: $white
+        font-size: 1.25rem
+        &:hover
+            color: $white
+
+
+.nav
+    &__list
+        @include make-col(6)
+    &__link
+        font-family: $marcellus
+        transition: transform 100ms
+
+.support
+    &__list
+        @include make-col(1.5)
+        margin-left: 100px
+    &__item
+        position: relative
+    &__link
+        i.fas
+            transition: transform 100ms
+        &:hover
+            i.fas
+                transform: scale(2)
