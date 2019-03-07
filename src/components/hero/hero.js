@@ -7,15 +7,25 @@ class Hero extends Component {
             docHeight = document.body.clientHeight,
             smallCircle = document.querySelector(".hero__bg3"),
             mediumCircle = document.querySelector(".hero__bg2"),
-            largeCircle = document.querySelector(".hero__bg");
+            largeCircle = document.querySelector(".hero__bg"),
+            heroEl = document.querySelector(".hero");
 
         function handleMouseMove(event) {
-            let pageX, pageY, xRatio, yRatio;
+            let xRatio, yRatio;
             xRatio = Math.round((event.pageX / docWidth) * 100);
             yRatio = Math.round((event.pageY / docHeight) * 100);
-            mediumCircle.style.cssText = `transform: translate(-${xRatio},-${yRatio})`;
-            console.log(xRatio);
-            console.log(yRatio);
+            mediumCircle.setAttribute(
+                "style",
+                `transform: translate(-${xRatio}%,-${yRatio}%)`
+            );
+            smallCircle.setAttribute(
+                "style",
+                `transform: translate(-${xRatio}%,-${yRatio}%)`
+            );
+            largeCircle.setAttribute(
+                "style",
+                `transform: translate(-${xRatio}%,-${yRatio}%)`
+            );
         }
         document.onmousemove = handleMouseMove;
     }
