@@ -68,13 +68,13 @@ class Hero extends Component {
                     -${subtlize(xRatio, 0, 33)}deg,
                     -${subtlize(yRatio, 0, 41)}deg
                 )`
-            );
+            );*/
       radialGradient.setAttribute(
         "style",
         `transform: translate(
                     ${neutralize(subtlize(xRatio, 30, 70))}%
                 )`
-      );*/
+      );
     }
 
     // take 50% number and move it to 0% so that the old 0% will equal -50% and the old 100% will be 50%
