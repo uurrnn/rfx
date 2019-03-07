@@ -16,18 +16,15 @@ class Hero extends Component {
         function handleMouseMove(event) {
             let xRatio,
                 yRatio,
-                subtleX,
-                subtleY,
-                neutralX,
-                neutralY,
-                bothX,
-                bothY,
                 min = 40,
                 max = 60;
+
             // percentages based on where the mouse is relative to document
             xRatio = Math.round((event.pageX / windowWidth) * 100);
             yRatio = Math.round((event.pageY / windowHeight) * 100);
 
+            // move stuff. random numbers are min/max ranges so the bigger difference
+            // between stuff, the more it moves
             smallCircle2.setAttribute(
                 "style",
                 `transform: translate(
@@ -49,7 +46,6 @@ class Hero extends Component {
                     -${subtlize(yRatio, 56, 44)}%
                 )`
             );
-
             largeCircle.setAttribute(
                 "style",
                 `transform: translate(
