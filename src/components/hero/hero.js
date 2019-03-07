@@ -30,30 +30,42 @@ class Hero extends Component {
             // is in the middle of the screen and on the top left
             smallCircle2.setAttribute(
                 "style",
-                `transform: translate(-50%,-50%) skew(
-                    -${subtlize(xRatio, 0, 92)}deg,
-                    -${subtlize(yRatio, 0, 92)}deg
+                `transform: translate(-50%,-50%) scale(
+                    -${subtlize(xRatio, 1, 2)},
+                    -${subtlize(yRatio, 1, 2)}
+                ) skew(
+                    -${subtlize(xRatio, 0, 55)}deg,
+                    -${subtlize(yRatio, 0, 88)}deg
                 )`
             );
             smallCircle3.setAttribute(
                 "style",
-                `transform: translate(-50%,-50%) skew(
-                    -${subtlize(xRatio, 0, 40)}deg,
-                    -${subtlize(yRatio, 0, 40)}deg
+                `transform: translate(-50%,-50%) scale(
+                    -${subtlize(xRatio, 1, 3)},
+                    -${subtlize(yRatio, 1, 3)}
+                ) skew(
+                    -${subtlize(xRatio, 0, 44)}deg,
+                    -${subtlize(yRatio, 0, 77)}deg
                 )`
             );
             mediumCircle.setAttribute(
                 "style",
-                `transform: translate(-50%,-50%) skew(
-                    -${subtlize(xRatio, 0, 45)}deg,
-                    -${subtlize(yRatio, 0, 45)}deg
+                `transform: translate(-50%,-50%) scale(
+                    -${subtlize(xRatio, 1, 2)},
+                    -${subtlize(yRatio, 1, 2)}
+                ) skew(
+                    -${subtlize(xRatio, 0, 41)}deg,
+                    -${subtlize(yRatio, 0, 44)}deg
                 )`
             );
             largeCircle.setAttribute(
                 "style",
-                `transform: translate(-50%,-50%) skew(
-                    -${subtlize(xRatio, 0, 35)}deg,
-                    -${subtlize(yRatio, 0, 35)}deg
+                `transform: translate(-50%,-50%) scale(
+                    -${subtlize(xRatio, 1, 1)},
+                    -${subtlize(yRatio, 1, 1)}
+                ) skew(
+                    -${subtlize(xRatio, 0, 33)}deg,
+                    -${subtlize(yRatio, 0, 41)}deg
                 )`
             );
             radialGradient.setAttribute(
