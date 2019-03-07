@@ -26,16 +26,15 @@ class Hero extends Component {
             // move stuff. random numbers are min/max ranges so the bigger difference
             // between stuff, the more it moves
             // TODO
-            // figure out a way to make it so the 0,0 point
-            // is in the middle of the screen and on the top left
+            // update neutralize to accept all numbers and just half it and do the range from there
             smallCircle2.setAttribute(
                 "style",
                 `transform: translate(-50%,-50%) scale(
-                    -${subtlize(xRatio, 1, 2)},
-                    -${subtlize(yRatio, 1, 2)}
+                    -${neutralize(subtlize(xRatio, 1, 2))},
+                    -${neutralize(subtlize(yRatio, 1, 2))}
                 ) skew(
-                    -${subtlize(xRatio, 0, 55)}deg,
-                    -${subtlize(yRatio, 0, 88)}deg
+                    -${neutralize(subtlize(xRatio, 0, 55))}deg,
+                    -${neutralize(subtlize(yRatio, 0, 88))}deg
                 )`
             );
             smallCircle3.setAttribute(
