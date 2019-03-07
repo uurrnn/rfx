@@ -11,11 +11,12 @@ $marker:    "Permanent Marker", cursive
 $marcellus: "Marcellus", serif
 
 $black:     rgb(0, 0, 0)
-$slate:     rgb(20, 20, 20)
+$slate:     rgb(33, 33, 33)
 $concrete:  rgb(100, 100, 100)
 $white:     rgb(255, 255, 255)
 $red:       rgb(185, 43, 39)
 $blue:      rgb(19, 47, 99)
+$purple:    rgb(93, 38, 193)
 $lightblue: rgb(55, 177, 251)
 $pink:      rgb(172, 121, 255)
 
@@ -35,28 +36,40 @@ body
     background-image: linear-gradient(125deg, rgba($red, 0) -35%, rgba($red, 1) 15%, rgba($blue, 1) 80% )
     position: relative
     overflow: hidden
-    &__bg, &__bg2, &__bg3
+    &__bg, &__bg2, &__bg3, &__bg4, &__bg5
         position: absolute
         display: block
+        background: transparent
         border-radius: 50%
         width: 100%
         height: 100%
+        border-width: 50px
+        border-style: solid
         z-index: 3
         top: 50%
         left: 70%
         transform: translate(-50%, -50%)
     &__bg
-        background-color: #24c6dc
+        border-color: #24c6dc
         max-width: 500px
         max-height: 500px
     &__bg2
-        background-color: #3f93cf
-        max-width: 325px
-        max-height: 325px
+        border-color: #3f93cf
+        max-width: 400px
+        max-height: 400px
     &__bg3
-        background-color: #514a9d
-        max-width: 175px
-        max-height: 175px
+        border-color: #514a9d
+        max-width: 300px
+        max-height: 300px
+    &__bg4
+        border-color: $red
+        max-width: 200px
+        max-height: 200px
+    &__bg5
+        border-color: $slate
+        max-width: 100px
+        max-height: 100px
+
         
 
     .scroll-more
@@ -72,7 +85,7 @@ body
     &__tag
         top: 15vh
         left: 10%
-        text-shadow: 1px 1px 0 #111
+        //text-shadow: 1px 1px 0 #111
         font-family: $marker
         font-size: 5.5rem
         line-height: 6rem
@@ -102,7 +115,7 @@ body
         height: 100%
         z-index: 1
     &__radial
-        background-image: radial-gradient( circle at 60%,  rgba($lightblue, .4) 0%, rgba($pink, 0) 50% )
+        background-image: radial-gradient( circle at 60%,  rgba($purple, .4) 0%, rgba($pink, 0) 50% )
     &__texture
         background-image: url("../assets/3px-tile.png")
         opacity: .25

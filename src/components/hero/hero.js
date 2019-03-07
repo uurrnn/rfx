@@ -5,7 +5,9 @@ class Hero extends Component {
     componentDidMount() {
         const windowWidth = window.innerWidth,
             windowHeight = window.innerHeight,
-            smallCircle = document.querySelector(".hero__bg3"),
+            smallCircle = document.querySelector(".hero__bg5"),
+            smallCircle2 = document.querySelector(".hero__bg4"),
+            smallCircle3 = document.querySelector(".hero__bg3"),
             mediumCircle = document.querySelector(".hero__bg2"),
             largeCircle = document.querySelector(".hero__bg"),
             radialGradient = document.querySelector(".hero__radial"),
@@ -18,34 +20,49 @@ class Hero extends Component {
                 subtleY,
                 neutralX,
                 neutralY,
+                bothX,
+                bothY,
                 min = 40,
                 max = 60;
             // percentages based on where the mouse is relative to document
             xRatio = Math.round((event.pageX / windowWidth) * 100);
             yRatio = Math.round((event.pageY / windowHeight) * 100);
 
-            subtleX = subtlize(xRatio, min, max);
-            subtleY = subtlize(yRatio, min, max);
-
-            neutralX = neutralize(xRatio);
-            neutralY = neutralize(yRatio);
-
-            // move objects
+            smallCircle2.setAttribute(
+                "style",
+                `transform: translate(
+                    -${subtlize(xRatio, 39, 62)}%,
+                    -${subtlize(yRatio, 37, 65)}%
+                )`
+            );
+            smallCircle3.setAttribute(
+                "style",
+                `transform: translate(
+                    -${subtlize(xRatio, 30, 70)}%,
+                    -${subtlize(yRatio, 30, 70)}%
+                )`
+            );
             mediumCircle.setAttribute(
                 "style",
-                `transform: translate(-${subtleX}%,-${subtleY}%)`
+                `transform: translate(
+                    -${subtlize(xRatio, 56, 44)}%,
+                    -${subtlize(yRatio, 56, 44)}%
+                )`
             );
-            smallCircle.setAttribute(
-                "style",
-                `transform: translate(-${subtleX}%,-${subtleY}%)`
-            );
+
             largeCircle.setAttribute(
                 "style",
-                `transform: translate(-${subtleX}%,-${subtleY}%)`
+                `transform: translate(
+                    -${subtlize(xRatio, 48, 52)}%,
+                    -${subtlize(yRatio, 48, 52)}%
+                )`
             );
             radialGradient.setAttribute(
                 "style",
-                `transform: translate(${neutralX}%, ${neutralY}%)`
+                `transform: translate(
+                    ${neutralize(subtlize(xRatio, 40, 60))}%,
+                    ${neutralize(subtlize(yRatio, 40, 60))}%
+                )`
             );
         }
 
@@ -56,22 +73,14 @@ class Hero extends Component {
         }
 
         // take in a number and create a number that will make the objects move less
-        // at 50/50 the objects are in their original place if positioned absolutely,
-        // so around there is the goal
-        //
-        // hard stop issue needs to be addressed by not rounding straight to the edge numbers
-        // if its passed them, but to round towards it based on how far away it is
-        // e.g. 0 = 40 10 = 41 20 = 42, so it ramps down instead of just stops moving
         function subtlize(num, min, max) {
-            if (num < min) {
-                num = min;
-            } else if (num > max) {
-                num = max;
-            } else {
-                num = num;
-            }
-            return num;
+            // turn number back into percent
+            let percent = num / 100;
+            // returns a new number that represents the percent between the min and max numbers
+            // e.g  percent = 50%, min = 1, max = 8, should return 4
+            return (max - min) * percent + min;
         }
+
         // when mouse moves, run function
         // TODO - refactor this into an interval that checks mouse position every
         // x secounds and then checks if that number is different enough to spend
@@ -97,6 +106,8 @@ class Hero extends Component {
                 <div className="hero__bg" />
                 <div className="hero__bg2" />
                 <div className="hero__bg3" />
+                <div className="hero__bg4" />
+                <div className="hero__bg5" />
                 <div className="scroll-more">
                     <div className="scroll-more__wheel" />
                 </div>
