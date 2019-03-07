@@ -3,8 +3,8 @@ import Header from "../header/header";
 
 class Hero extends Component {
     componentDidMount() {
-        const docWidth = document.body.clientWidth,
-            docHeight = document.body.clientHeight,
+        const windowWidth = window.innerWidth,
+            windowHeight = window.innerHeight,
             smallCircle = document.querySelector(".hero__bg3"),
             mediumCircle = document.querySelector(".hero__bg2"),
             largeCircle = document.querySelector(".hero__bg"),
@@ -21,8 +21,8 @@ class Hero extends Component {
                 min = 40,
                 max = 60;
             // percentages based on where the mouse is relative to document
-            xRatio = Math.round((event.pageX / docWidth) * 100);
-            yRatio = Math.round((event.pageY / docHeight) * 100);
+            xRatio = Math.round((event.pageX / windowWidth) * 100);
+            yRatio = Math.round((event.pageY / windowHeight) * 100);
 
             subtleX = subtlize(xRatio, min, max);
             subtleY = subtlize(yRatio, min, max);
@@ -45,7 +45,7 @@ class Hero extends Component {
             );
             radialGradient.setAttribute(
                 "style",
-                `transform: translateX(${neutralX}%)`
+                `transform: translate(${neutralX}%, ${neutralY}%)`
             );
         }
 
