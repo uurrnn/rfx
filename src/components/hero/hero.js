@@ -25,32 +25,35 @@ class Hero extends Component {
 
             // move stuff. random numbers are min/max ranges so the bigger difference
             // between stuff, the more it moves
+            // TODO
+            // figure out a way to make it so the 0,0 point
+            // is in the middle of the screen and on the top left
             smallCircle2.setAttribute(
                 "style",
-                `transform: translate(
-                    -${subtlize(xRatio, 39, 62)}%,
-                    -${subtlize(yRatio, 37, 65)}%
+                `transform: translate(-50%,-50%) skew(
+                    -${subtlize(xRatio, 0, 92)}deg,
+                    -${subtlize(yRatio, 0, 92)}deg
                 )`
             );
             smallCircle3.setAttribute(
                 "style",
-                `transform: translate(
-                    -${subtlize(xRatio, 30, 70)}%,
-                    -${subtlize(yRatio, 30, 70)}%
+                `transform: translate(-50%,-50%) skew(
+                    -${subtlize(xRatio, 0, 40)}deg,
+                    -${subtlize(yRatio, 0, 40)}deg
                 )`
             );
             mediumCircle.setAttribute(
                 "style",
-                `transform: translate(
-                    -${subtlize(xRatio, 56, 44)}%,
-                    -${subtlize(yRatio, 56, 44)}%
+                `transform: translate(-50%,-50%) skew(
+                    -${subtlize(xRatio, 0, 45)}deg,
+                    -${subtlize(yRatio, 0, 45)}deg
                 )`
             );
             largeCircle.setAttribute(
                 "style",
-                `transform: translate(
-                    -${subtlize(xRatio, 48, 52)}%,
-                    -${subtlize(yRatio, 48, 52)}%
+                `transform: translate(-50%,-50%) skew(
+                    -${subtlize(xRatio, 0, 35)}deg,
+                    -${subtlize(yRatio, 0, 35)}deg
                 )`
             );
             radialGradient.setAttribute(
