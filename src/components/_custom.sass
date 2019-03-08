@@ -127,25 +127,28 @@ body
             height: 20px
             &--active
                 background-color: rgba($white, .25)
-        &__background, &__background2, &__picture
+        &__background, &__background2, &__picture, &__picture2
             position: absolute
             top: 0
             left: 30%
             width: 100%
             height: 100%
-        &__background
+            opacity: .5
+        &__background, &__background2
             z-index: 2
-            opacity: .1
-            background-image: radial-gradient( circle at 40%, rgba($red, .35) 0%, rgba(yellow, .35) 45%, rgba(orange, .35) 85% )
+        &__background
+            background-image: linear-gradient( 145deg, rgba($red, 1) 0%, rgba(yellow, .1) 45%, rgba(orange, .3) 85% )
         &__background2
-            background-image: radial-gradient( circle at 40%, rgba(orange, .35) 0%, rgba($purple, .25) 55%, rgba(pink, .05) 95% )
-        &__picture
-            background-image: url("../assets/background--lock.jpg")
+            background-image: linear-gradient( 40deg, rgba(orange, 1) 0%, rgba($purple, .25) 55%, rgba(pink, .05) 95% )
+        &__picture, &__picture2
             background-repeat: no-repeat
             background-size: cover
             background-position: -400px center
-            opacity: .3
+        &__picture
+            background-image: url("../assets/background--lock.jpg")
 
+        &__picture2
+            background-image: url("../assets/background--business.jpg")
 
         
 

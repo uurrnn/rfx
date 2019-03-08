@@ -2,6 +2,7 @@ import { h, render, Component } from "preact";
 import Glide from "@glidejs/glide";
 
 import Lock from "../../assets/background--lock.jpg";
+import Business from "../../assets/background--business.jpg";
 
 class Slider extends Component {
     componentDidMount() {
@@ -16,6 +17,8 @@ class Slider extends Component {
                         <li class="glide__slide">
                             <div className="hero__bg" />
                             <div className="hero__bg4" />
+                            <div className="hero__bg3" />
+                            <div className="hero__bg5" />
                         </li>
 
                         <li class="glide__slide">
@@ -25,8 +28,7 @@ class Slider extends Component {
 
                         <li class="glide__slide">
                             <div className="glide__background2" />
-                            <div className="hero__bg3" />
-                            <div className="hero__bg5" />
+                            <div className="glide__picture2" />
                         </li>
                     </ul>
                 </div>
