@@ -72,7 +72,7 @@ class Hero extends Component {
       radialGradient.setAttribute(
         "style",
         `transform: translate(
-                    ${neutralize(subtlize(xRatio, 30, 70))}%
+                    ${neutralize(subtlize(xRatio, 40, 60))}%
                 )`
       );
     }

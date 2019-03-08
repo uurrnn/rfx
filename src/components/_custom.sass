@@ -23,6 +23,14 @@ $pink:      rgb(172, 121, 255)
 $primary: $blue
 $secondary: $red
 
+// background gradient colors
+$linearGradient1: $blue
+$linearGradient2: $red
+$linearGradient3: $blue
+
+$radialGradient1: yellow
+$radialGradient2: $purple
+
 
 body
     background: $slate
@@ -33,7 +41,7 @@ body
     height: 100vh
     flex-direction: column
     background-color: #fafafa
-    background-image: linear-gradient(125deg, rgba($blue, 1) 15%, rgba($red, 1) 80%, rgba($blue, 1) 130% )
+    background-image: linear-gradient(125deg, rgba($linearGradient1, 1) 15%, rgba($linearGradient2, 1) 80%, rgba($linearGradient3, 1) 130% )
     position: relative
     overflow: hidden
     &__bg, &__bg2, &__bg3, &__bg4, &__bg5
@@ -125,7 +133,7 @@ body
         height: 100%
         z-index: 1
     &__radial
-        background-image: radial-gradient( circle at 60%,  rgba(yellow, .25) 0%, rgba($purple, 0) 50% )
+        background-image: radial-gradient( circle at 60%,  rgba($radialGradient1, .1) 0%, rgba($radialGradient2, 0) 50% )
     &__texture
         background-image: url("../assets/3px-tile.png")
         opacity: .25
