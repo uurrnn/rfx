@@ -11,7 +11,6 @@ class Hero extends Component {
             smallCircle = document.querySelector(".hero__bg5"),
             smallCircle2 = document.querySelector(".hero__bg4"),
             smallCircle3 = document.querySelector(".hero__bg3"),
-            mediumCircle = document.querySelector(".hero__bg2"),
             largeCircle = document.querySelector(".hero__bg"),
             radialGradient = document.querySelector(".hero__radial"),
             texture = document.querySelector(".hero__texture");
@@ -43,15 +42,6 @@ class Hero extends Component {
                 )`
             );
             smallCircle3.setAttribute(
-                "style",
-                `transform:
-                translate(-50%,-50%)
-                skew(
-                  ${subtlize(neutralize(xRatio, 100), 1, 100)}deg,
-                  ${subtlize(neutralize(yRatio, 100), 1, 100)}deg
-                )`
-            );
-            mediumCircle.setAttribute(
                 "style",
                 `transform:
                 translate(-50%,-50%)
