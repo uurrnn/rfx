@@ -5,10 +5,12 @@
 // 3  slides
 //   1 background image or shapes or effects
 //   2 text if there is any
-// 4 hero tag, quote, button
+// 4 hero tag, quote, button, scroll more
 // 5 header. navigation drop downs
     
-@import url('https://fonts.googleapis.com/css?family=Marcellus|Permanent+Marker');
+// transform: rotateZ(360deg) for enforcing gpu usage if available
+
+@import url('https://fonts.googleapis.com/css?family=Marcellus|Permanent+Marker')
 @import "node_modules/@glidejs/glide/src/assets/sass/glide.core"
 
 $marker:    "Permanent Marker", cursive
@@ -23,6 +25,10 @@ $blue:      rgb(19, 47, 99)
 $purple:    rgb(93, 38, 193)
 $lightblue: rgb(55, 177, 251)
 $pink:      rgb(172, 121, 255)
+$paleblue:  #4A569D
+$yellow:    #FFC837
+$orange:    #F09819
+$rubyred:   #DC2424
 
 $primary: $blue
 $secondary: $red
@@ -32,16 +38,77 @@ $linearGradient1: $blue
 $linearGradient2: darken($red, 5%)
 $linearGradient3: $blue
 
-$radialGradient1: darken($purple, 5%)
+$radialGradient1: $purple
 $radialGradient2: yellow
 
-$radialGradientOpacity1: .15
-$radialGradientOpacity2: .05
+$radialGradientOpacity1: .2
+$radialGradientOpacity2: .03
 $radialGradientOpacity3: 0
+
+@keyframes blockquoteBigBar 
+  0%
+      transform: translateY(0)
+      opacity: 0
+  50%
+      transform: translateY(-10%)
+  100%
+      opacity: 1
+      transform: translateY(0)
+
+@keyframes blockquoteSmallBar 
+  0%
+      transform: translateY(-70%)
+      opacity: 0
+  75%
+      opacity: 1
+      transform: translateY(10%)
+  100%
+      transform: translateY(0)
+
+@keyframes scroll 
+  0%
+      opacity: 0
+  10%
+      transform: translate(-50%, 0)
+      opacity: 1
+  100%
+      transform: translate(-50%, 10px)
+      opacity: 0
+
 
 body
     background: $slate
+.hero__button
+    border-radius: 2px 25px 25px 25px
+    &.blue
+        background: rgba($blue, .5)
+        &:hover
+            background: rgba($blue, 1)
+            color: $slate
+    &.orange
+        background: $orange
+        color: $slate
+        &:hover
+            background: lighten($orange, 10%)
+          
+    &.white
+        border: 2px solid $white
+        background: rgba($white, .1)
+        &:hover
+            background: $white
+            color: $slate
+    &.tomato
+        background: tomato
+        color: $slate
+        &:hover
+            background: lighten(tomato, 10%)
 
+    &.rubyred
+        background: $rubyred
+        color: $slate
+        &:hover
+            background: lighten($rubyred, 10%)
+          
 
 .hero
     @include make-row()
@@ -51,51 +118,70 @@ body
     background-image: linear-gradient(125deg, rgba($linearGradient1, 1) 15%, rgba($linearGradient2, 1) 80%, rgba($linearGradient3, 1) 120% )
     position: relative
     overflow: hidden
-    &__bg, &__bg2, &__bg3, &__bg4, &__bg5
+    &__textbox
         position: absolute
-        display: block
-        background: transparent
-        border-radius: 50%
-        width: 100%
-        height: 100%
-        border-width: 50px
-        border-style: solid
         z-index: 3
-        top: 50%
-        left: 70%
-        transform: translate(-50%, -50%)
-    &__bg
-        border-color: #24c6dc
+        color: $white
+        top: 23vh
+        left: 12%
+    &__button, &__tag
+        transition: opacity 1500ms
+        transform: rotateZ(360deg)
+    &__quote
+        transition: transform 1000ms, opacity 750ms
+        transform: translateX(-10px) rotateZ(360deg)
+    &__tag
+        //text-shadow: 1px 3px 0px #111
+        font-family: $marker
+        font-size: 5.5rem
+        line-height: 6rem
+        &--the
+            padding-left: 310px
+
+
+    &__quote
+        opacity: 0
+        left: -35px
         max-width: 500px
-        max-height: 500px
-    &__bg2
-        border-color: #3f93cf
-        max-width: 400px
-        max-height: 400px
-    &__bg3
-        border-color: #514a9d
-        max-width: 300px
-        max-height: 300px
-    &__bg4
-        border-color: $red
-        max-width: 200px
-        max-height: 200px
-    &__bg5
-        border-color: $slate
-        max-width: 60px        
-        max-height: 60px
-        border-width: 40px
-    .logo
-        position: absolute;
-        bottom: 40px
-        right: 40px
-        z-index: 4
-        opacity: .15
-        transition: opacity 150ms
+        padding-left: 35px
+        margin-top: 30px
+        margin-bottom: 30px
+        font-family: $marcellus
+        font-size: 1.25rem
+        position: relative
+        transition-delay: 100ms
+        &::after, &::before
+            content: ''
+            transform: rotateZ(360deg)
+            border-color: rgba(cyan, .45)
+            border-style: solid
+            position: absolute
+            display: block
+            left: 0
+            bottom: 0
+            width: 1px
+        &::after
+            border-radius: 0 10px 0 10px
+            border-width: 5px
+            height: 47%
+            left: 5px
+        &::before
+            border-radius: 10px 0 10px 0
+            border-width: 5px
+            height: 80%
+    &__button
+        transition-delay: 140ms
+        opacity: 0
+        max-width: 350px
+        border: none
+        background-color: $red
+        font-family: $marcellus
+        font-size: 2rem
+        padding: 10px 40px
+        cursor: pointer
+        color: $white
         &:hover
-            opacity: .5
-
-
+            background-color: lighten($red, 5%)
     // glide overwrites
     .glide
         position: absolute
@@ -108,6 +194,58 @@ body
         &__slide
             position: relative
             overflow: hidden
+            .hero__tag
+                opacity: 0
+            // customizing 2 blockquote bars for each slide
+            &:nth-of-type(1)
+                .hero__quote
+                    &::before, &::after
+                        border-color: rgba(white, .35)
+                        bottom: 10% 
+                    &::after
+                        bottom: 15%
+            &:nth-of-type(2)
+                .hero__quote
+                    &::before, &::after
+                        bottom: 10% 
+                        border-color: rgba($orange, .35)
+                    &::before
+                        border-radius: 0px 10px 0px 10px
+                    &::after
+                        bottom: 30%
+                        border-radius: 10px 0 10px 0
+            &:nth-of-type(3)
+                .hero__quote
+                    &::before, &::after
+                        bottom: 15% 
+                        border-color: rgba($rubyred, .35)
+                    &::after
+                        bottom: 5%
+            &:nth-of-type(4)
+                .hero__quote
+                    &::before, &::after
+                        border-color: rgba(tomato, .35)
+                        bottom: 15% 
+                    &::before
+                        border-radius: 0px 10px 0px 10px
+                    &::after
+                        bottom: 40%
+                        border-radius: 10px 0 10px 0
+        &__slide--active
+            .hero__quote
+                // 2 bars next to blockquote animation
+                &::before,&::after
+                    animation-duration: 1s
+                    animation-timing-function: ease-in-out
+                    animation-iteration-count: 1
+                &::after
+                    animation-name: blockquoteSmallBar
+                &::before
+                    animation-name: blockquoteBigBar
+            .hero__tag, .hero__quote, .hero__button
+                opacity: 1
+            .hero__button, .hero__quote
+                transform: translateX(0)
         &__bullets
             position: absolute
             left: 30px
@@ -116,7 +254,7 @@ body
             display: flex
             flex-direction: column
             justify-content: space-between
-            height: 100px
+            height: 150px
         &__bullet
             outline: none
             border: none
@@ -133,61 +271,31 @@ body
             left: 30%
             width: 100%
             height: 100%
-            opacity: .3
+            opacity: 1
         &__background, &__background2
             z-index: 2
         &__background
-            background-image: linear-gradient( 45deg, rgba(cyan, .6) 0%, rgba($pink, .5) 75% )
+            background-image: linear-gradient( 230deg, rgba($rubyred, .5) -10%, rgba($pink, .25) 55%, rgba($paleblue, .6) 100% )
         &__background2
-            background-image: linear-gradient( 40deg, rgba(orange, .6) 0%, rgba($purple, .25) 55%, rgba(pink, .5) 95% )
+            background-image: linear-gradient( 40deg, rgba($orange, .6) 0%, rgba($purple, .25) 55%, rgba($pink, .5) 100% )
         &__picture, &__picture2
             background-repeat: no-repeat
             background-size: cover
-            background-position: -400px center
+            background-position: -400px 100px
+            opacity: 1
         &__picture
-            background-image: url("../assets/background--lock.jpg")
-
+            background-image: url("../assets/background--bokeh.jpg")
+            background-position: 0 100px
         &__picture2
             background-image: url("../assets/background--business.jpg")
 
-        
 
     .scroll-more
         position: absolute
         left: 50%
-        bottom: 65px
+        bottom: 35px
         translateX(-50%)
-    &__tag, &__quote, &__button
-        position: relative
         z-index: 4
-        color: $white
-        left: 11%
-    &__tag
-        top: 15vh
-        left: 10%
-        //text-shadow: 1px 1px 0 #111
-        font-family: $marker
-        font-size: 5.5rem
-        line-height: 6rem
-    &__quote
-        top: 17vh
-        width: 50%
-        max-width: 500px
-        border-left: 10px solid rgba(cyan, .55)
-        padding-left: 25px
-        font-family: $marcellus
-        font-size: 1.25rem
-    &__button
-        max-width: 250px
-        top: 19vh
-        border: none
-        background-color: $red
-        font-family: $marcellus
-        font-size: 2rem
-        padding: 10px 40px
-        cursor: pointer
-        &:hover
-            background-color: lighten($red, 5%)
     &__radial, &__texture
         position: absolute
         top: 0
@@ -196,6 +304,7 @@ body
         height: 100%
         z-index: 1
     &__radial
+        transform: rotateZ(360deg)
         background-image: radial-gradient( circle at 55% 60%, rgba($radialGradient1, $radialGradientOpacity1) 0%, rgba($radialGradient2, $radialGradientOpacity2) 45%, rgba($radialGradient2, $radialGradientOpacity3) 70% )
     &__texture
         background-image: url("../assets/3px-tile.png")
@@ -211,6 +320,7 @@ body
     border-radius: 19px
     opacity: .125
     &__wheel
+        transform: rotateZ(360deg)
         background-color: $white
         width: 3px
         border-radius: 25%
@@ -224,22 +334,6 @@ body
         animation-timing-function: cubic-bezier(.15,.41,.69,.94)
         animation-iteration-count: infinite
 
-@keyframes scroll 
-  0%
-      opacity: 0
-  10%
-      transform: translate(-50%, 0)
-      opacity: 1
-  100%
-      transform: translate(-50%, 10px)
-      opacity: 0
-
-.logo
-    width: 100%
-    max-width: 75px
-    height: auto
-
-
 
 .header
     display: flex
@@ -251,6 +345,15 @@ body
     &__left
         @include make-col-ready()
         @include make-col(2)
+        padding-top: 20px
+        padding-left: 35px
+        .logo
+            z-index: 4
+            opacity: .1
+            height: 60px
+            transition: opacity 150ms
+            &:hover
+                opacity: .5
     &__right
         @include make-col-ready()
         @include make-col(10)
