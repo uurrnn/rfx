@@ -2,8 +2,6 @@ import { h, render, Component } from "preact";
 import Header from "../header/header";
 import Slider from "../slider/slider";
 
-import logo from "../../assets/rfx-logo--white.png";
-
 class Hero extends Component {
     componentDidMount() {
         const windowWidth = window.innerWidth,
@@ -31,7 +29,7 @@ class Hero extends Component {
             // variable out these numbers
             // get functions out of setAttribute. possibly plan out numbers ahead of time and place them into setAttribute
             // part of speed refactor
-
+            /*
             smallCircle2.setAttribute(
                 "style",
                 `transform:
@@ -59,11 +57,11 @@ class Hero extends Component {
                     ${subtlize(neutralize(yRatio, 100), 1, 100)}deg
                   )`
             );
-
+*/
             radialGradient.setAttribute(
                 "style",
-                `transform: translate(
-                    ${neutralize(subtlize(xRatio, 25, 60), 60)}%
+                `transform: translateX(
+                    ${neutralize(subtlize(xRatio, 70, 30), 100)}%
                 )`
             );
         }
@@ -95,18 +93,12 @@ class Hero extends Component {
         return (
             <section className="hero">
                 <Header />
-                <h1 className="hero__tag">RFX is the</h1>
-                <h1 className="hero__tag">Total Package</h1>
-                <blockquote className="hero__quote">
-                    RFX team members have accumulated over 100+ years of
-                    knowledge and experience in our industry. Let us put that
-                    experience to work for you and your organization.
-                </blockquote>
-                <button className="hero__button">About Us</button>
+                <div className="hero__textbox">
+                    <h1 className="hero__tag">RFX is</h1>
+                </div>
                 <Slider />
                 <div className="hero__radial" />
                 <div className="hero__texture" />
-                <img className="logo" src={logo} />
                 <div className="scroll-more">
                     <div className="scroll-more__wheel" />
                 </div>
