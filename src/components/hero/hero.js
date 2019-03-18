@@ -6,12 +6,9 @@ class Hero extends Component {
     componentDidMount() {
         const windowWidth = window.innerWidth,
             windowHeight = window.innerHeight,
-            smallCircle = document.querySelector(".hero__bg5"),
-            smallCircle2 = document.querySelector(".hero__bg4"),
-            smallCircle3 = document.querySelector(".hero__bg3"),
-            largeCircle = document.querySelector(".hero__bg"),
             radialGradient = document.querySelector(".hero__radial"),
-            texture = document.querySelector(".hero__texture");
+            texture = document.querySelector(".hero__texture"),
+            theX = document.querySelector(".theX");
 
         function handleMouseMove(event) {
             let xRatio,
@@ -57,13 +54,24 @@ class Hero extends Component {
                     ${subtlize(neutralize(yRatio, 100), 1, 100)}deg
                   )`
             );
-*/
+
+            theX.setAttribute(
+                "style",
+                `transform: translateY(-50%)
+                    rotateX(
+                        ${neutralize(subtlize(yRatio, 30, 0), 30)}deg
+                    )
+                    rotateY(
+                        ${neutralize(subtlize(xRatio, 0, 60), 60)}deg
+                    )`
+            );
+            /*
             radialGradient.setAttribute(
                 "style",
                 `transform: translateX(
                     ${neutralize(subtlize(xRatio, 70, 30), 100)}%
                 )`
-            );
+            );*/
         }
 
         // subtract by half of the maximum number in number range

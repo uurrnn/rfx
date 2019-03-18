@@ -1,0 +1,30 @@
+.footer {
+    @include make-row;
+    color: $white;
+    align-items: center;
+    justify-content: center;
+
+    &__section {
+        @include make-col-ready;
+        @include make-col(2);
+    }
+
+    &__list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    &__item {
+        font-family: $alegreya;
+        &--title {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+    }
+
+    &__link {
+        color: $white;
+        font-family: $alegreya;
+    }
+}

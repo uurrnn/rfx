@@ -1,0 +1,27 @@
+.theX {
+    position: absolute;
+    top: 50%;
+    left: 65%;
+    transform-style: preserve-3d;
+    transform: translateY(-50%);
+    span {
+        opacity: 1;
+        font-family: $alegreya;
+        color: $lightblue;
+        font-size: 1000px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        text-shadow: 1px -1px 0 lighten($lightblue, 5%), -1px 1px 0 $blue;
+    }
+}
+
+@for $i from 1 through 30 {
+    .theX {
+        span {
+            &:nth-of-type(#{$i}) {
+                transform: translate(-50%, -50%) translateZ(#{$i}px);
+            }
+        }
+    }
+}

@@ -10,11 +10,13 @@
     
 // transform: rotateZ(360deg) for enforcing gpu usage if available
 
-@import url('https://fonts.googleapis.com/css?family=Marcellus|Permanent+Marker')
+@import url('https://fonts.googleapis.com/css?family=Alegreya+Sans+SC|Marcellus|Permanent+Marker')
 @import "node_modules/@glidejs/glide/src/assets/sass/glide.core"
 
 $marker:    "Permanent Marker", cursive
-$marcellus: "Marcellus", serif
+$alegreya: "Alegreya Sans SC", sans-serif
+$marcellus: $alegreya //"Marcellus", serif
+
 
 $black:     rgb(0, 0, 0)
 $slate:     rgb(33, 33, 33)
@@ -77,9 +79,14 @@ $radialGradientOpacity3: 0
 
 
 body
-    background: $slate
+    background-image: linear-gradient(100deg, $blue -25%, $red 220%)
+    
+.img-fluid
+    height: auto
+    max-width: 100%
+
 .hero__button
-    border-radius: 2px 25px 25px 25px
+    border-radius: 10px 35px 35px 10px
     &.blue
         background: rgba($blue, .5)
         &:hover
@@ -123,7 +130,7 @@ body
         z-index: 3
         color: $white
         top: 23vh
-        left: 12%
+        left: 11%
     &__button, &__tag
         transition: opacity 1500ms
         transform: rotateZ(360deg)
@@ -142,7 +149,7 @@ body
     &__quote
         opacity: 0
         left: -35px
-        max-width: 500px
+        max-width: 400px
         padding-left: 35px
         margin-top: 30px
         margin-bottom: 30px
@@ -177,7 +184,8 @@ body
         background-color: $red
         font-family: $marcellus
         font-size: 2rem
-        padding: 10px 40px
+        text-transform: uppercase
+        padding: 10px 40px 10px 38px
         cursor: pointer
         color: $white
         &:hover
@@ -268,7 +276,7 @@ body
         &__background, &__background2, &__picture, &__picture2
             position: absolute
             top: 0
-            left: 30%
+            left: 38%
             width: 100%
             height: 100%
             opacity: 1
@@ -341,7 +349,8 @@ body
     z-index: 5
     position: relative
     background: rgba($black, .2)
-    padding-bottom: 20px
+    padding-top: 10px
+    padding-bottom: 10px
     &__left
         @include make-col-ready()
         @include make-col(2)
@@ -367,7 +376,7 @@ body
     @include make-row()
     width: 100%
     justify-content: flex-end
-    margin-top: 20px
+    align-items: center
     &__list
         @include make-col-ready()
         list-style: none
@@ -379,9 +388,15 @@ body
         justify-content: space-between
     &__link
         color: $white
-        font-size: 1.25rem
+        font-size: 1.2rem
+        padding: 10px 18px 9px
+        border-radius: 10px 20px 20px 10px
+        text-transform: uppercase
+        letter-spacing: .05rem
         &:hover
             color: $white
+            background: rgba($lightblue, .65)
+            text-decoration: none
 
 
 .nav

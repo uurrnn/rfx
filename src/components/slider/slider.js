@@ -5,11 +5,16 @@ import Lock from "../../assets/background--lock.jpg";
 import Business from "../../assets/background--business.jpg";
 
 const glide = new Glide(".glide", {
-    autoplay: 16000,
-    hoverpause: true
+    autoplay: 56000,
+    hoverpause: true,
+    dragDistance: false
 });
 
 class Slider extends Component {
+    constructor(props) {
+        super(props);
+    }
+
     componentDidMount() {
         glide.mount();
     }
@@ -21,7 +26,10 @@ class Slider extends Component {
                     <ul class="glide__slides">
                         <li class="glide__slide">
                             <div className="hero__textbox">
-                                <h1 className="hero__tag">&nbsp;</h1>
+                                <h1 className="hero__tag hero__tag--the">
+                                    the
+                                </h1>
+                                <h1 className="hero__tag">Total Package</h1>
                                 <blockquote className="hero__quote">
                                     At RFX Technologies, we strive to provide
                                     innovative technology services to both small
@@ -31,8 +39,30 @@ class Slider extends Component {
                                     we have had with our clients.
                                 </blockquote>
                                 <button className="hero__button white">
-                                    About Us
+                                    Learn More
                                 </button>
+                            </div>
+                            <div className="theX">
+                                <span>x</span>
+                                <span>x</span>
+                                <span>x</span>
+                                <span>x</span>
+                                <span>x</span>
+                                <span>x</span>
+                                <span>x</span>
+                                <span>x</span>
+                                <span>x</span>
+                                <span>x</span>
+                                <span>x</span>
+                                <span>x</span>
+                                <span>x</span>
+                                <span>x</span>
+                                <span>x</span>
+                                <span>x</span>
+                                <span>x</span>
+                                <span>x</span>
+                                <span>x</span>
+                                <span>x</span>
                             </div>
                         </li>
 
@@ -80,10 +110,8 @@ class Slider extends Component {
 
                         <li class="glide__slide">
                             <div className="hero__textbox">
-                                <h1 className="hero__tag hero__tag--the">
-                                    the
-                                </h1>
-                                <h1 className="hero__tag">Total Package</h1>
+                                <h1 className="hero__tag">&nbsp;</h1>
+                                <h1 className="hero__tag">Us</h1>
                                 <blockquote className="hero__quote">
                                     RFX team members have accumulated over 100+
                                     years of knowledge and experience in our
