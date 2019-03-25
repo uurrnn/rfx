@@ -1,0 +1,64 @@
+$marker:    "Permanent Marker", cursive
+$alegreya: "Alegreya Sans SC", sans-serif
+$marcellus: $alegreya //"Marcellus", serif
+$fontawesome: "Font Awesome"
+
+
+$black:     rgb(0, 0, 0)
+$slate:     rgb(33, 33, 33)
+$concrete:  rgb(100, 100, 100)
+$white:     rgb(255, 255, 255)
+$red:       rgb(185, 43, 39)
+$blue:      rgb(19, 47, 99)
+$purple:    rgb(93, 38, 193)
+$lightblue: rgb(55, 177, 251)
+$pink:      rgb(172, 121, 255)
+$paleblue:  #4A569D
+$yellow:    #FFC837
+$orange:    #F09819
+$rubyred:   #DC2424
+
+$primary: $blue
+$secondary: $red
+
+// background gradient colors
+$linearGradient1: $blue
+$linearGradient2: darken($red, 5%)
+$linearGradient3: $blue
+
+$radialGradient1: $purple
+$radialGradient2: yellow
+
+$radialGradientOpacity1: .2
+$radialGradientOpacity2: .03
+$radialGradientOpacity3: 0
+
+@keyframes blockquoteBigBar 
+  0%
+      transform: translateY(0)
+      opacity: 0
+  50%
+      transform: translateY(-10%)
+  100%
+      opacity: 1
+      transform: translateY(0)
+
+@keyframes blockquoteSmallBar 
+  0%
+      transform: translateY(-70%)
+      opacity: 0
+  75%
+      opacity: 1
+      transform: translateY(10%)
+  100%
+      transform: translateY(0)
+
+@keyframes scroll 
+  0%
+      opacity: 0
+  10%
+      transform: translate(-50%, 0)
+      opacity: 1
+  100%
+      transform: translate(-50%, 10px)
+      opacity: 0

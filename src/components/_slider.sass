@@ -1,0 +1,112 @@
+// glider overwrites
+.glider-contain
+    height: 100%
+    position: absolute
+.glider
+    position: relative
+    height: 100%
+    z-index: 3
+    &__slide
+        position: relative
+        .hero__tag
+            opacity: 0
+        &.active
+            .hero__quote
+                // 2 bars next to blockquote animation
+                &::before,&::after
+                    animation-duration: 1s
+                    animation-timing-function: ease-in-out
+                    animation-iteration-count: 1
+                &::after
+                    animation-name: blockquoteSmallBar
+                &::before
+                    animation-name: blockquoteBigBar
+            .hero__tag, .hero__quote, .hero__button
+                opacity: 1
+            .hero__button, .hero__quote
+                transform: translateX(0)
+
+// slide backgrounds
+.glider__slide
+    &__background, &__background2, &__picture, &__picture2
+        position: absolute
+        top: 0
+        left: 38%
+        width: 100%
+        height: 100%
+        opacity: 1
+    &__background, &__background2
+        z-index: 2
+    &__background
+        background-image: linear-gradient( 230deg, rgba($rubyred, .5) -10%, rgba($pink, .25) 55%, rgba($paleblue, .6) 100% )
+    &__background2
+        background-image: linear-gradient( 40deg, rgba($orange, .6) 0%, rgba($purple, .25) 55%, rgba($pink, .5) 100% )
+    &__picture, &__picture2
+        background-repeat: no-repeat
+        background-size: cover
+        background-position: -400px 100px
+        opacity: 1
+    &__picture
+        background-image: url("../assets/background--bokeh.jpg")
+        background-position: 0 100px
+    &__picture2
+        background-image: url("../assets/background--business.jpg")
+
+// customizing 2 blockquote bars for each slide
+.glider__slide
+    &:nth-of-type(1)
+        .hero__quote
+            &::before, &::after
+                border-color: rgba(white, .35)
+                bottom: 10% 
+            &::after
+                bottom: 15%
+    &:nth-of-type(2)
+        .hero__quote
+            &::before, &::after
+                bottom: 10% 
+                border-color: rgba($orange, .35)
+            &::before
+                border-radius: 0px 10px 0px 10px
+            &::after
+                bottom: 30%
+                border-radius: 10px 0 10px 0
+    &:nth-of-type(3)
+        .hero__quote
+            &::before, &::after
+                bottom: 15% 
+                border-color: rgba($rubyred, .35)
+            &::after
+                bottom: 5%
+    &:nth-of-type(4)
+        .hero__quote
+            &::before, &::after
+                border-color: rgba(tomato, .35)
+                bottom: 15% 
+            &::before
+                border-radius: 0px 10px 0px 10px
+            &::after
+                bottom: 40%
+                border-radius: 10px 0 10px 0
+
+.glider-dots
+    position: absolute
+    left: 30px
+    top: 50%
+    transform: translateY(-50%)
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    height: 150px
+    z-index: 4
+
+.glider-dot
+    outline: none
+    border: none
+    border-radius: 50%
+    background-color: rgba($black, .4)
+    transition: background-color 400ms
+    width: 20px
+    height: 20px
+    &.active
+        background-color: rgba($white, .25)

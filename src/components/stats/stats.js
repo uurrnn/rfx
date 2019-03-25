@@ -1,5 +1,7 @@
 import { h } from "preact";
 
+import Triforce from "../../assets/triforce.svg";
+
 const Stats = () => (
     <section className="stats">
         <aside className="stats__triforce">
@@ -8,8 +10,57 @@ const Stats = () => (
                 <br />
                 businesses in the past.
             </h4>
-            <h1>Is Yours Next?</h1>
-            <div className="triforce" />
+            <h1>Is Yours Next ?</h1>
+            <div className="triforce">
+                <div className="triforce__triangle">
+                    <svg
+                        width="270"
+                        height="239"
+                        viewBox="0 0 270 239"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path
+                            d="M20.6603 230.981H249.144C258.752 230.981 264.768 220.592 259.985 212.258L146.082 13.8C141.285 5.44202 129.234 5.42655 124.416 13.7722L9.83498 212.231C5.02368 220.564 11.0378 230.981 20.6603 230.981Z"
+                            fill="#F2EB3F"
+                            stroke="#d6ce3a"
+                            stroke-width="15"
+                        />
+                    </svg>
+                </div>
+                <div className="triforce__triangle">
+                    <svg
+                        width="270"
+                        height="239"
+                        viewBox="0 0 270 239"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path
+                            d="M20.6603 230.981H249.144C258.752 230.981 264.768 220.592 259.985 212.258L146.082 13.8C141.285 5.44202 129.234 5.42655 124.416 13.7722L9.83498 212.231C5.02368 220.564 11.0378 230.981 20.6603 230.981Z"
+                            fill="#F2EB3F"
+                            stroke="#d6ce3a"
+                            stroke-width="15"
+                        />
+                    </svg>
+                </div>
+                <div className="triforce__triangle">
+                    <svg
+                        width="270"
+                        height="239"
+                        viewBox="0 0 270 239"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path
+                            d="M20.6603 230.981H249.144C258.752 230.981 264.768 220.592 259.985 212.258L146.082 13.8C141.285 5.44202 129.234 5.42655 124.416 13.7722L9.83498 212.231C5.02368 220.564 11.0378 230.981 20.6603 230.981Z"
+                            fill="#F2EB3F"
+                            stroke="#d6ce3a"
+                            stroke-width="15"
+                        />
+                    </svg>
+                </div>
+            </div>
         </aside>
         <article className="stats__blogpost">
             <h2>Latest News</h2>

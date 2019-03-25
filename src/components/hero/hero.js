@@ -20,40 +20,9 @@ class Hero extends Component {
             xRatio = Math.round((event.pageX / windowWidth) * 100);
             yRatio = Math.round((event.pageY / windowHeight) * 100);
 
-            // move stuff. random numbers are min/max ranges so the bigger difference between stuff, the more it moves
-            // if you use neutralize and subtlize together the max's should be the same
-            // TODO ^ fix this so that the programmer doesnt have to know it
             // variable out these numbers
             // get functions out of setAttribute. possibly plan out numbers ahead of time and place them into setAttribute
             // part of speed refactor
-            /*
-            smallCircle2.setAttribute(
-                "style",
-                `transform:
-                translate(-50%,-50%)
-                skew(
-                  ${subtlize(neutralize(xRatio, 100), 1, 100)}deg,
-                  ${subtlize(neutralize(yRatio, 100), 1, 100)}deg
-                )`
-            );
-            smallCircle3.setAttribute(
-                "style",
-                `transform:
-                translate(-50%,-50%)
-                skew(
-                  ${subtlize(neutralize(xRatio, 100), 1, 100)}deg,
-                  ${subtlize(neutralize(yRatio, 100), 1, 100)}deg
-                )`
-            );
-            largeCircle.setAttribute(
-                "style",
-                `transform:
-                  translate(-50%,-50%)
-                  skew(
-                    ${subtlize(neutralize(xRatio, 100), 1, 100)}deg,
-                    ${subtlize(neutralize(yRatio, 100), 1, 100)}deg
-                  )`
-            );
 
             theX.setAttribute(
                 "style",
@@ -65,13 +34,13 @@ class Hero extends Component {
                         ${neutralize(subtlize(xRatio, 0, 60), 60)}deg
                     )`
             );
-            /*
+
             radialGradient.setAttribute(
                 "style",
                 `transform: translateX(
                     ${neutralize(subtlize(xRatio, 70, 30), 100)}%
                 )`
-            );*/
+            );
         }
 
         // subtract by half of the maximum number in number range
