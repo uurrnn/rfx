@@ -2,12 +2,15 @@
 .glider-contain
     height: 100%
     position: absolute
+.glider-track
+    height: 100%
 .glider
     position: relative
     height: 100%
     z-index: 3
     &__slide
         position: relative
+        overflow: hidden
         .hero__tag
             opacity: 0
         &.active
@@ -27,7 +30,7 @@
                 transform: translateX(0)
 
 // slide backgrounds
-.glider__slide
+.glider
     &__background, &__background2, &__picture, &__picture2
         position: absolute
         top: 0
@@ -110,3 +113,6 @@
     height: 20px
     &.active
         background-color: rgba($white, .25)
+    &:hover,&:active,&:focus
+        outline: 0
+        border: 0

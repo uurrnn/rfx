@@ -13,7 +13,8 @@ class Slider extends Component {
     componentDidMount() {
         new Glider(document.querySelector(".glider"), {
             slidesToShow: 1,
-            draggable: true,
+            draggable: false,
+            scrollLock: true,
             dots: ".dots"
         });
     }

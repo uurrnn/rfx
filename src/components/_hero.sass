@@ -55,12 +55,12 @@
             border-width: 5px
             height: 80%
     &__radial, &__texture
-    position: absolute
-    top: 0
-    left: 0
-    width: 100%
-    height: 100%
-    z-index: 1
+        position: absolute
+        top: 0
+        left: 0
+        width: 100%
+        height: 100%
+        z-index: 1
     &__radial
         transform: rotateZ(0)
         background-image: radial-gradient( circle at 55% 60%, rgba($radialGradient1, $radialGradientOpacity1) 0%, rgba($radialGradient2, $radialGradientOpacity2) 45%, rgba($radialGradient2, $radialGradientOpacity3) 70% )
@@ -110,7 +110,7 @@
             background: lighten(tomato, 10%)
 
     &.rubyred
-        background: $rubyred
+        background: lighten($rubyred, 5%)
         color: $slate
         &:hover
             background: lighten($rubyred, 10%)
