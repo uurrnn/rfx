@@ -1,4 +1,7 @@
 import { h, render, Component } from "preact";
+
+import offset from "../../../node_modules/mouse-event-offset";
+
 import Header from "../header/header";
 import Slider from "../slider/slider";
 
@@ -14,15 +17,45 @@ class Hero extends Component {
         this.subtlize = this.subtlize.bind(this);
     }
 
-    handleMouseMove(event) {
+    handleMouseMove(ev) {
         let xRatio,
             yRatio,
             min = 40,
-            max = 60;
+            max = 60,
+            pos = [];
 
         // percentages based on where the mouse is relative to document
         xRatio = Math.round((event.pageX / windowWidth) * 100);
         yRatio = Math.round((event.pageY / windowHeight) * 100);
+
+        pos.push(xRatio);
+        pos.push(yRatio);
+    }
+
+    moveStuffWithMouseNumbers() {
+        // variable out these numbers
+        // get functions out of setAttribute. possibly plan out numbers ahead of time and place them into setAttribute
+        // part of speed refactor
+
+        // move the X
+        theX.setAttribute(
+            "style",
+            `transform: translateY(-50%)
+            rotateX(
+                ${this.neutralize(this.subtlize(yRatio, 30, 0), 30)}deg
+            )
+            rotateY(
+                ${this.neutralize(this.subtlize(xRatio, 0, 60), 60)}deg
+            )`
+        );
+
+        // move the background gradient
+        radialGradient.setAttribute(
+            "style",
+            `transform: translateX(
+                ${this.neutralize(this.subtlize(xRatio, 70, 30), 100)}%
+            )`
+        );
     }
 
     neutralize(num, max) {
@@ -42,33 +75,14 @@ class Hero extends Component {
         const radialGradient = document.querySelector(".hero__radial"),
             theX = document.querySelector(".theX");
 
-        // variable out these numbers
-        // get functions out of setAttribute. possibly plan out numbers ahead of time and place them into setAttribute
-        // part of speed refactor
-
-        theX.setAttribute(
-            "style",
-            `transform: translateY(-50%)
-            rotateX(
-                ${this.neutralize(this.subtlize(yRatio, 30, 0), 30)}deg
-            )
-            rotateY(
-                ${this.neutralize(this.subtlize(xRatio, 0, 60), 60)}deg
-            )`
-        );
-
-        radialGradient.setAttribute(
-            "style",
-            `transform: translateX(
-                ${this.neutralize(this.subtlize(xRatio, 70, 30), 100)}%
-            )`
-        );
         // when mouse moves, run function
         // TODO - refactor this into an interval that checks mouse position every
         // x secounds and then checks if that number is different enough to spend
         // resources running the rest of the function. if it is, then move the stuff
         // apply transitions via css so it doesnt look like things are teleporting
-        document.onmousemove = handleMouseMove;
+        window.addEventListener("mousemove", ev => {
+            this.handleMouseMove(ev);
+        });
     }
 
     render() {

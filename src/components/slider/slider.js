@@ -8,15 +8,25 @@ import Business from "../../assets/background--business.jpg";
 class Slider extends Component {
     constructor(props) {
         super(props);
+
+        this.initGlider = this.initGlider.bind(this);
+    }
+
+    initGlider() {
+        let glider;
+        if (glider === undefined) {
+            glider = new Glider(document.querySelector(".glider"), {
+                slidesToShow: 1,
+                draggable: true,
+                scrollLock: true,
+                dots: ".dots"
+            });
+            glider;
+        }
     }
 
     componentDidMount() {
-        new Glider(document.querySelector(".glider"), {
-            slidesToShow: 1,
-            draggable: false,
-            scrollLock: true,
-            dots: ".dots"
-        });
+        this.initGlider();
     }
 
     render() {
