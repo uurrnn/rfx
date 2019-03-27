@@ -13,7 +13,6 @@ class Hero extends Component {
         super(props);
 
         this.handleMouseMove = this.handleMouseMove.bind(this);
-        this.throttleHandler = this.throttleHandler.bind(this);
         this.throttled = this.throttled.bind(this);
         this.moveStuffWithMouseNumbers = this.moveStuffWithMouseNumbers.bind(
             this
@@ -22,24 +21,18 @@ class Hero extends Component {
         this.subtlize = this.subtlize.bind(this);
     }
 
-    handleMouseMove(ev) {
+    handleMouseMove() {
         let xRatio,
             yRatio,
             min = 40,
             max = 60,
             pos = [];
-
+        return function(e) {
+            xRatio = Math.round((e.pageX / windowWidth) * 100);
+            yRatio = Math.round((e.pageY / windowHeight) * 100);
+            console.log(xRatio);
+        };
         // percentages based on where the mouse is relative to document
-        xRatio = Math.round((ev.pageX / windowWidth) * 100);
-        yRatio = Math.round((ev.pageY / windowHeight) * 100);
-
-        pos.push(xRatio);
-        pos.push(yRatio);
-        console.log(pos);
-    }
-
-    throttleHandler() {
-        this.throttled(200, this.handleMouseMove());
     }
 
     throttled(delay, fn) {
@@ -107,7 +100,10 @@ class Hero extends Component {
         // x secounds and then checks if that number is different enough to spend
         // resources running the rest of the function. if it is, then move the stuff
         // apply transitions via css so it doesnt look like things are teleporting
-        hero.addEventListener("mousemove", this.throttleHandler());
+        hero.addEventListener(
+            "mousemove",
+            this.throttled(200, this.handleMouseMove())
+        );
     }
 
     render() {
