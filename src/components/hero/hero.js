@@ -13,6 +13,10 @@ class Hero extends Component {
         super(props);
 
         this.handleMouseMove = this.handleMouseMove.bind(this);
+        this.throttleMouseMove = this.throttleMouseMove.bind(this);
+        this.moveStuffWithMouseNumbers = this.moveStuffWithMouseNumbers.bind(
+            this
+        );
         this.neutralize = this.neutralize.bind(this);
         this.subtlize = this.subtlize.bind(this);
     }
@@ -25,11 +29,30 @@ class Hero extends Component {
             pos = [];
 
         // percentages based on where the mouse is relative to document
-        xRatio = Math.round((event.pageX / windowWidth) * 100);
-        yRatio = Math.round((event.pageY / windowHeight) * 100);
+        xRatio = Math.round((ev.pageX / windowWidth) * 100);
+        yRatio = Math.round((ev.pageY / windowHeight) * 100);
 
         pos.push(xRatio);
         pos.push(yRatio);
+        console.log(pos);
+    }
+
+    throttleHandler = throttled(200, this.handleMouseMove);
+
+    throttled(delay, fn) {
+        let lastCall = 0;
+
+        return function(...args) {
+            const now = new Date().getTime();
+
+            if (now - lastCall < delay) {
+                return;
+            }
+
+            lastCall = now;
+
+            return fn(...args);
+        };
     }
 
     moveStuffWithMouseNumbers() {
@@ -73,16 +96,15 @@ class Hero extends Component {
 
     componentDidMount() {
         const radialGradient = document.querySelector(".hero__radial"),
-            theX = document.querySelector(".theX");
+            theX = document.querySelector(".theX"),
+            hero = document.querySelector(".hero");
 
         // when mouse moves, run function
         // TODO - refactor this into an interval that checks mouse position every
         // x secounds and then checks if that number is different enough to spend
         // resources running the rest of the function. if it is, then move the stuff
         // apply transitions via css so it doesnt look like things are teleporting
-        window.addEventListener("mousemove", ev => {
-            this.handleMouseMove(ev);
-        });
+        hero.addEventListener("mousemove", this.throttleHandler());
     }
 
     render() {
