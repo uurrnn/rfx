@@ -13,7 +13,8 @@ class Hero extends Component {
         super(props);
 
         this.handleMouseMove = this.handleMouseMove.bind(this);
-        this.throttleMouseMove = this.throttleMouseMove.bind(this);
+        this.throttleHandler = this.throttleHandler.bind(this);
+        this.throttled = this.throttled.bind(this);
         this.moveStuffWithMouseNumbers = this.moveStuffWithMouseNumbers.bind(
             this
         );
@@ -37,7 +38,9 @@ class Hero extends Component {
         console.log(pos);
     }
 
-    throttleHandler = throttled(200, this.handleMouseMove);
+    throttleHandler() {
+        this.throttled(200, this.handleMouseMove());
+    }
 
     throttled(delay, fn) {
         let lastCall = 0;
