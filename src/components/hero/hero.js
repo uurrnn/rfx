@@ -6,33 +6,37 @@ import Header from "../header/header";
 import Slider from "../slider/slider";
 
 const windowWidth = window.innerWidth,
-    windowHeight = window.innerHeight;
+    windowHeight = window.innerHeight,
+    min = 30,
+    max = 60;
+
+let theX, radialGradient;
 
 class Hero extends Component {
     constructor(props) {
         super(props);
 
-        this.handleMouseMove = this.handleMouseMove.bind(this);
+        this.state = {
+            xRatio: 0,
+            yRatio: 0
+        };
+
+        this.getCoords = this.getCoords.bind(this);
         this.throttled = this.throttled.bind(this);
-        this.moveStuffWithMouseNumbers = this.moveStuffWithMouseNumbers.bind(
-            this
-        );
+        this.moveStuff = this.moveStuff.bind(this);
         this.neutralize = this.neutralize.bind(this);
         this.subtlize = this.subtlize.bind(this);
     }
 
-    handleMouseMove() {
-        let xRatio,
-            yRatio,
-            min = 40,
-            max = 60,
-            pos = [];
-        return function(e) {
-            xRatio = Math.round((e.pageX / windowWidth) * 100);
-            yRatio = Math.round((e.pageY / windowHeight) * 100);
-            console.log(xRatio);
+    getCoords() {
+        return e => {
+            this.setState({
+                xRatio: Math.round((e.pageX / windowWidth) * 100),
+                yRatio: Math.round((e.pageY / windowHeight) * 100)
+            });
+
+            this.moveStuff(this.state.xRatio, this.state.yRatio);
         };
-        // percentages based on where the mouse is relative to document
     }
 
     throttled(delay, fn) {
@@ -51,29 +55,24 @@ class Hero extends Component {
         };
     }
 
-    moveStuffWithMouseNumbers() {
-        // variable out these numbers
-        // get functions out of setAttribute. possibly plan out numbers ahead of time and place them into setAttribute
-        // part of speed refactor
-
-        // move the X
+    moveStuff(x, y) {
+        // move x
         theX.setAttribute(
             "style",
-            `transform: translateY(-50%)
-            rotateX(
-                ${this.neutralize(this.subtlize(yRatio, 30, 0), 30)}deg
-            )
-            rotateY(
-                ${this.neutralize(this.subtlize(xRatio, 0, 60), 60)}deg
-            )`
+            `transform: translateY(-50%) 
+             rotateX(
+                 ${this.neutralize(this.subtlize(x, 30, max), 100)}deg)
+             rotateY(
+                 ${this.neutralize(this.subtlize(y, min, max), 100)}deg)`
         );
 
         // move the background gradient
         radialGradient.setAttribute(
             "style",
-            `transform: translateX(
-                ${this.neutralize(this.subtlize(xRatio, 70, 30), 100)}%
-            )`
+            `transform: translateX(-${this.neutralize(
+                this.subtlize(x, 5, 60),
+                60
+            )}%)`
         );
     }
 
@@ -91,9 +90,10 @@ class Hero extends Component {
     }
 
     componentDidMount() {
-        const radialGradient = document.querySelector(".hero__radial"),
-            theX = document.querySelector(".theX"),
-            hero = document.querySelector(".hero");
+        const hero = document.querySelector(".hero");
+
+        radialGradient = document.querySelector(".hero__radial");
+        theX = document.querySelector(".theX");
 
         // when mouse moves, run function
         // TODO - refactor this into an interval that checks mouse position every
@@ -102,7 +102,7 @@ class Hero extends Component {
         // apply transitions via css so it doesnt look like things are teleporting
         hero.addEventListener(
             "mousemove",
-            this.throttled(200, this.handleMouseMove())
+            this.throttled(200, this.getCoords())
         );
     }
 

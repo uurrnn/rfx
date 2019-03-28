@@ -4,6 +4,7 @@
     left: 65%;
     transform-style: preserve-3d;
     transform: translateY(-50%);
+    transition: transform 500ms;
     span {
         opacity: 1;
         font-family: $alegreya;
