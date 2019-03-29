@@ -70,6 +70,12 @@ class Slider extends Component {
                             <span>x</span>
                             <span>x</span>
                             <span>x</span>
+                            <span>x</span>
+                            <span>x</span>
+                            <span>x</span>
+                            <span>x</span>
+                            <span>x</span>
+                            <span>x</span>
                         </div>
                     </div>
 

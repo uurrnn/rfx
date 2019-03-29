@@ -60,19 +60,16 @@ class Hero extends Component {
         theX.setAttribute(
             "style",
             `transform: translateY(-50%) 
-             rotateX(
-                 ${this.neutralize(this.subtlize(x, 30, max), 100)}deg)
-             rotateY(
-                 ${this.neutralize(this.subtlize(y, min, max), 100)}deg)`
+             rotateX(${this.neutralize(this.subtlize(y, 70, 30), 100)}deg)
+             rotateY(${this.neutralize(this.subtlize(x, 30, 70), 100)}deg)`
         );
 
         // move the background gradient
         radialGradient.setAttribute(
             "style",
-            `transform: translateX(-${this.neutralize(
-                this.subtlize(x, 5, 60),
-                60
-            )}%)`
+            `transform: translateX(
+                ${this.neutralize(this.subtlize(x, 40, 60), 100)}%
+            )`
         );
     }
 
@@ -102,7 +99,7 @@ class Hero extends Component {
         // apply transitions via css so it doesnt look like things are teleporting
         hero.addEventListener(
             "mousemove",
-            this.throttled(200, this.getCoords())
+            this.throttled(100, this.getCoords())
         );
     }
 

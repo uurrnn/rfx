@@ -8,11 +8,13 @@ import Footer from "./footer/footer";
 import "./app.sass";
 
 const App = () => (
-    <div className="container-fluid">
+    <div>
         <Hero />
-        <Main />
-        <Stats />
-        <Footer />
+        <div className="container-fluid">
+            <Main />
+            <Stats />
+            <Footer />
+        </div>
     </div>
 );
 

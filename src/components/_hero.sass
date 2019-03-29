@@ -1,11 +1,16 @@
 .hero
     @include make-row()
     height: 100vh
+    width: 100%
     flex-direction: column
     background-color: #fafafa
     background-image: linear-gradient(125deg, rgba($linearGradient1, 1) 15%, rgba($linearGradient2, 1) 80%, rgba($linearGradient3, 1) 120% )
-    position: relative
+    position: fixed
     overflow: hidden
+    z-index: 0
+    margin-left: 0
+    margin-right: 0
+
     &__textbox
         position: absolute
         z-index: 3
